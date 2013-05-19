@@ -1,7 +1,7 @@
 var vows = require('vows');
 var assert = require('assert');
 var util = require('util');
-var GoogleStrategy = require('passport-google/strategy');
+var GoogleStrategy = require('passport-google').Strategy;
 
 
 vows.describe('GoogleStrategy').addBatch({
