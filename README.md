@@ -27,6 +27,10 @@ Passport strategy for pubkey auth - successful decryption of an encrypted challe
         the plaintext:
         https://server.tld/auth/gpg/callback?challenge=some-crypto-random-number&fingerprint=asdf
 
+    If the user successfully decrypts the encrypted challenge, they make an HTTP
+    request to the URL inside. Since the challenge should be unguessable, this
+    is proof of identity (proof of ownership of this pubkey)
+
     GET /auth/gpg/callback?challenge=correct-number&fingerprint=asdf
     fetch user associated with this fingerprint; passport.callback(user);
 
