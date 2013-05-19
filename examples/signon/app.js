@@ -1,7 +1,7 @@
 var express = require('express')
   , passport = require('passport')
   , util = require('util')
-  , GPGStrategy = require('../../lib/passport-gnupg').Strategy;
+  , GPGStrategy = require('../../lib/passport-pubkey-challenge').Strategy;
 
 
 // Passport session setup.
@@ -87,7 +87,7 @@ app.get('/login', function(req, res){
 //   the user to google.com.  After authenticating, Google will redirect the
 //   user back to this application at /auth/google/return
 app.get('/auth/google', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
+  passport.authenticate('pubkey', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
   });
@@ -98,7 +98,7 @@ app.get('/auth/google',
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 app.get('/auth/google/return', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
+  passport.authenticate('pubkey', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');
   });

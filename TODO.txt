@@ -1,0 +1,23 @@
+To Do
+=====
+
+Fill in the Strategy in lib/passport-pubkey-challenge/strategy.js
+
+This will have to return an appropriately formatted object; `app.js` will call
+the Strategy to instantiate it; passing in a `verify` callback.
+
+This callback will define how the users' application handles authentication. In
+practice this means that the user provides a callback that is called when we
+have an authentication result. (I.E. when someone successfully sends a request
+to a URL that was encrypted in a challenge; we know that they have demonstrated
+ownership of that fingerprint.)
+
+The part I'm not clear on, is that there are two pertinent routes in `app.js`.
+
+First is /auth/pubkey; which generates a challenge for a given fingerprint
+and sends the challenge as an http response.
+
+Second is /auth/pubkey/callback; which is where requests are sent claiming
+knowledge of a challenge string. 
+
+There is some way to define both of these in the passport Strategy.
