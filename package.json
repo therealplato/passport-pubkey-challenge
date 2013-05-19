@@ -1,0 +1,32 @@
+{
+  "name": "passport-pubkey-challenge",
+  "version": "0.1.0",
+  "description": "Pubic key challenge/response authentication strategy for Passport.",
+  "keywords": ["passport", "gnupg", "rsa", "publickey", "keypair", "asymetric", "auth", "authn", "authentication", "identity"],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/therealplato/passport-pubkey-challenge.git"
+  },
+  "bugs": {
+    "url": "http://github.com/therealplato/passport-pubkey-challenge/issues"
+  },
+  "licenses": [ {
+    "type": "MIT",
+    "url": "http://www.opensource.org/licenses/MIT" 
+  } ],
+  "author": {
+    "name": "plato",
+    "email": "therealplato@gmail.com"
+  },
+  "main": "./lib/passport-pubkey-challenge",
+  "dependencies": {
+    "pkginfo": "0.2.x"
+  },
+  "devDependencies": {
+    "vows": "0.6.x"
+  },
+  "scripts": {
+    "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js"
+  },
+  "engines": { "node": ">= 0.6.0" }
+}
