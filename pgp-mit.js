@@ -56,7 +56,7 @@ function standardizeFingerprint(dirtyFP){
   if(typeof dirtyFP !== 'string'){ return false };
   dirtyFP = dirtyFP.toLowerCase();
 
-  var badChars = dirtyFP.match(/[^0-9a-f]/); // any occurance of other characters
+  var badChars = dirtyFP.match(/[^0-9a-fx]/); // any occurance of other characters
   if(badChars){ return false; };
 
   var test0x = dirtyFP.match(/^0x([0-9a-f]*)/);
