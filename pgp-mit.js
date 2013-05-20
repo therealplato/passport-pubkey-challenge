@@ -1,5 +1,6 @@
 var request = require('request');
 
+
 function getPubkeyFromFingerprint(hexFP, callback){
   //var hexFP='0x1927D3053E30A739'
   var options = {
@@ -49,3 +50,27 @@ getPubkeyFromFingerprint('0x1927D3053E30A739', function(err, key){
     console.log(key);
   };
 });
+
+function standardizeFingerprint(dirtyFP){
+  //dirtyFP will be a user-provided fingerprint, maybe malicious
+  if(typeof dirtyFP !== 'string'){ return false };
+  dirtyFP = dirtyFP.toLowerCase();
+
+  var badChars = dirtyFP.match(/[^0-9a-f]/); // any occurance of other characters
+  if(badChars){ return false; };
+
+  var test0x = dirtyFP.match(/^0x([0-9a-f]*)/);
+  if(test0x){
+    var hex = test0x[1]; //first capture group got the hex string
+  };
+
+  var testHex = dirtyFP.match(/^[0-9a-f]*$/);
+  if(testHex){
+    var hex = dirtyFP;
+  };
+
+  if(!hex){ return false; }; // didn't match 0xabcd or abcd
+
+  var cleanFP = '0x'+hex;
+  return cleanFP;
+};
