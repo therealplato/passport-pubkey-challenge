@@ -1,7 +1,7 @@
 var request = require('request');
 
-function getPubkeyFromFingerprint(callback){
-  var hexFP='0x1927D3053E30A739'
+function getPubkeyFromFingerprint(hexFP, callback){
+  //var hexFP='0x1927D3053E30A739'
   var options = {
     uri: 'http://pgp.mit.edu:11371/pks/lookup',
     qs: {
@@ -41,7 +41,7 @@ function getPubkeyFromFingerprint(callback){
   });
 };
 
-getPubkeyFromFingerprint(function(err, key){
+getPubkeyFromFingerprint('0x1927D3053E30A739', function(err, key){
   if(err){ 
     console.log(err);
   } else {
